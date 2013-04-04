@@ -3,6 +3,7 @@
 
 #include <csimplemodule.h>
 #include <cmessage.h>
+#include <stdint.h>
 
 class SmartPacketRadio : public cSimpleModule
 {
@@ -10,14 +11,14 @@ class SmartPacketRadio : public cSimpleModule
 private:
     struct packet
     {
-        char control;
-        char dest;
-        unsigned char length;
-        char payload[255];
+        uint8_t control;
+        uint8_t dest;
+        uint8_t length;
+        uint8_t payload[255];
     } packet;
 
     int fd;
-    unsigned char address;
+    uint8_t address;
 
 protected:
     virtual void initialize();
@@ -25,7 +26,7 @@ protected:
     virtual void finish();
 
 public:
-    virtual inline unsigned char getAddress() {return address;}
+    virtual inline uint8_t getAddress() {return address;}
 };
 
 #endif

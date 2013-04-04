@@ -17,6 +17,7 @@
 #define __SPR_SINK_H
 
 #include <omnetpp.h>
+#include <stdint.h>
 
 /**
  * Message sink; see NED file for more info.

@@ -16,31 +16,29 @@
 #include "PacketList.h"
 
 PacketList::PacketList() {
-    // TODO Auto-generated constructor stub
-    packets = new int[1000];
-    count = 0;
+	// TODO Auto-generated constructor stub
+	packets = new uint32_t[1000];
+	count = 0;
 }
 
-void PacketList::addPacket(unsigned int packet) {
-    if (count >= 1000)
-    {
-        count = 0;
-    }
-    packets[count] = packet;
-    count++;
+void PacketList::addPacket(uint32_t packet) {
+	if (count >= 1000) {
+		count = 0;
+	}
+	packets[count] = packet;
+	count++;
 }
 
-bool PacketList::findPacket(unsigned int packet) {
-    bool found = false;
-    for (int i=0; (i<=count);i++) {
-        if (packets[i] == packet)
-        {
-            found = true;
-        }
-    }
-    return found;
+bool PacketList::findPacket(uint32_t packet) {
+	bool found = false;
+	for (uint32_t i = 0; (i <= count); i++) {
+		if (packets[i] == packet) {
+			found = true;
+		}
+	}
+	return found;
 }
 PacketList::~PacketList() {
-    // TODO Auto-generated destructor stub
+	// TODO Auto-generated destructor stub
 }
 

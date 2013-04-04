@@ -1,12 +1,12 @@
 #
-# OMNeT++/OMNEST Makefile for SPR
+# OMNeT++/OMNEST Makefile for numbat-wireless-stack
 #
 # This file was generated with the command:
-#  opp_makemake -f
+#  opp_makemake -f --deep
 #
 
 # Name of target to be created (-o option)
-TARGET = SPR$(EXE_SUFFIX)
+TARGET = numbat-wireless-stack$(EXE_SUFFIX)
 
 # User interface (uncomment one) (-u option)
 USERIF_LIBS = $(ALL_ENV_LIBS) # that is, $(TKENV_LIBS) $(CMDENV_LIBS)
@@ -30,12 +30,12 @@ O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 # Object files for local .cc and .msg files
 OBJS = \
     $O/PacketList.o \
-    $O/PollScheduler.o \
-    $O/Sink.o \
-    $O/SmartPacketRadio.o \
-    $O/Source.o \
     $O/StdErrSink.o \
+    $O/PollScheduler.o \
     $O/StdInSource.o \
+    $O/Source.o \
+    $O/SmartPacketRadio.o \
+    $O/Sink.o \
     $O/SmartPacket_m.o
 
 # Message files
@@ -112,7 +112,7 @@ msgheaders: $(MSGFILES:.msg=_m.h)
 clean:
 	$(qecho) Cleaning...
 	$(Q)-rm -rf $O
-	$(Q)-rm -f SPR SPR.exe libSPR.so libSPR.a libSPR.dll libSPR.dylib
+	$(Q)-rm -f numbat-wireless-stack numbat-wireless-stack.exe libnumbat-wireless-stack.so libnumbat-wireless-stack.a libnumbat-wireless-stack.dll libnumbat-wireless-stack.dylib
 	$(Q)-rm -f ./*_m.cc ./*_m.h
 
 cleanall: clean
@@ -124,28 +124,29 @@ depend:
 
 # DO NOT DELETE THIS LINE -- make depend depends on it.
 $O/PacketList.o: PacketList.cc \
-  ./PacketList.h
+	PacketList.h
 $O/PollScheduler.o: PollScheduler.cc \
-  ./PollScheduler.h
+	PollScheduler.h
 $O/Sink.o: Sink.cc \
-  ./PacketList.h \
-  ./SmartPacketRadio.h \
-  ./SmartPacket_m.h \
-  ./Sink.h
+	PacketList.h \
+	Sink.h \
+	SmartPacketRadio.h \
+	SmartPacket_m.h
 $O/SmartPacketRadio.o: SmartPacketRadio.cc \
-  ./PacketList.h \
-  ./PollScheduler.h \
-  ./SmartPacket_m.h \
-  ./SmartPacketRadio.h
+	PacketList.h \
+	PollScheduler.h \
+	SmartPacketRadio.h \
+	SmartPacket_m.h
 $O/SmartPacket_m.o: SmartPacket_m.cc \
-  ./SmartPacket_m.h
+	SmartPacket_m.h
 $O/Source.o: Source.cc \
-  ./Source.h \
-  ./SmartPacket_m.h
+	SmartPacket_m.h \
+	Source.h
 $O/StdErrSink.o: StdErrSink.cc \
-  ./StdErrSink.h \
-  ./SmartPacket_m.h
+	SmartPacket_m.h \
+	StdErrSink.h
 $O/StdInSource.o: StdInSource.cc \
-  ./StdInSource.h \
-  ./PollScheduler.h \
-  ./SmartPacket_m.h
+	PollScheduler.h \
+	SmartPacket_m.h \
+	StdInSource.h
+

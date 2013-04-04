@@ -16,17 +16,19 @@
 #ifndef PACKETLIST_H_
 #define PACKETLIST_H_
 
+#include <stdint.h>
+
 // Stores last 1000 packets received from each node
 class PacketList {
 protected:
-    int * packets;
-    unsigned int count;
+    uint32_t * packets;
+    uint32_t count;
 
 public:
     PacketList();
     virtual ~PacketList();
-    virtual void addPacket(unsigned int packet);
-    virtual bool findPacket(unsigned int packet);
+    virtual void addPacket(uint32_t packet);
+    virtual bool findPacket(uint32_t packet);
 
 };
 
