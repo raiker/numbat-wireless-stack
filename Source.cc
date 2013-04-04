@@ -43,8 +43,8 @@ void Source::handleMessage(cMessage *msg)
     char *buffer=new char[100];
     int src=par("address");
     int dest=par("broadcast");
-    // Outgoing packet format: Source Dest #packetnumber Type (h=hello,a=ack)
-    sprintf(buffer,"%d %d %d h",src,dest,(src*1000000)+n++);
+    // Outgoing packet format: Source Dest Address #packetnumber Type (h=hello,a=ack)
+    sprintf(buffer,"%d %d %d %d h",src,dest,dest,(src*1000000)+n++);
     job->setBuffer(buffer);
     job->setLength(strlen(buffer)+1);
     job->setDest(dest);
